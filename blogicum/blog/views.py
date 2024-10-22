@@ -42,13 +42,17 @@ posts = [
                 укутывал их, чтобы не испортились от дождя.''',
     },
 ]
+
+
 def index(request):
     print(posts[::-1])
     return render(request, 'blog/index.html', {'posts':posts[::-1]})
 
+
 def post_detail(request, id):
     filtered_post = [post for post in posts if post['id'] == int(id)][0]
     return render(request, 'blog/detail.html', {'post': filtered_post})
+
 
 def category_posts(request, category_slug):
     filtered_posts = [post for post in posts if post['category'] == category_slug]
